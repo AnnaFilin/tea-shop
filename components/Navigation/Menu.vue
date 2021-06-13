@@ -1,6 +1,6 @@
 <template>
-    <v-menu offset-y open-on-click class="menu-drop">
-         <!-- open-on-hover -->
+    <v-menu offset-y open-on-click open-on-hover class="menu-drop">
+         
       <template v-slot:activator="{ on, attrs }">
         <v-btn text x-large v-bind="attrs" v-on="on">
           {{ menuName }}

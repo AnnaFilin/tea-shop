@@ -20,7 +20,7 @@
         tile
         elevation="0"
       >
-        <v-radio :label="item" :value="item">
+        <v-radio :label="item" :value="index">
           <template #label>
             <p class="mb-0 pr-1">{{ item }}</p>
           </template>

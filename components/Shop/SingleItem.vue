@@ -8,21 +8,26 @@
           :src="item.image"
           :alt="item.title"
         />
-        
       </v-col>
       <v-col class="mx-auto px-16">
         <v-card-title class="justify-center warning--text text-h4 mb-6">
-            {{ item.title }}
+          {{ item.title }}
         </v-card-title>
-        <v-card-text class="text-center info--text text-h6 mb-6">{{ item.description }}</v-card-text>
+        <v-card-text class="text-center info--text text-h6 mb-6">{{
+          item.description
+        }}</v-card-text>
 
         <v-row>
-            <v-col cols="12" md="6">
-                <SizeSelect :options="item.sizeOption" v-model="packSize"/>
-            </v-col>
-            <v-col>
-                <QuantitySelect />
-            </v-col>
+          <v-col cols="12" md="6">
+            <SizeSelect :options="item.sizeOption" v-model="packSize" />
+          </v-col>
+          <v-col cols="12" md="4" class="align-self-center">
+            <QuantitySelect v-model="quantity" />
+            <TotalCalculator
+              :priceOfProduct="item.price"
+              :quantity="totalWeight"
+            />
+          </v-col>
         </v-row>
 
         <v-card-actions>
@@ -41,13 +46,19 @@
 
 <script>
 import tea from "@/pages/Shop/teaMockData.js";
-import SizeSelect from '@/components/Shop/SizeSelect'
-import QuantitySelect from '@/components/Shop/QuantitySelect'
+import SizeSelect from "@/components/Shop/SizeSelect";
+import QuantitySelect from "@/components/Shop/QuantitySelect";
+import TotalCalculator from "@/components/Shop/TotalCalculator";
+
+const SMALL_PACK = 0.4;
+const LARGE_PACK = 1;
+
 export default {
   name: "SingleItem",
   components: {
-      SizeSelect,
-      QuantitySelect
+    SizeSelect,
+    QuantitySelect,
+    TotalCalculator
   },
   //   props: {
   //     item: {
@@ -58,11 +69,19 @@ export default {
     return {
       item: null,
       packSize: 1,
+      quantity: 1
     };
   },
   created() {
     tea.image = "/images/tea/oolong/TeaPileHero1.jpg";
     this.item = tea;
+  },
+  computed: {
+    totalWeight() {
+      return this.packSize === 0
+        ? SMALL_PACK * this.quantity
+        : LARGE_PACK * this.quantity;
+    }
   }
 };
 </script>

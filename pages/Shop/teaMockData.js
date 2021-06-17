@@ -12,6 +12,6 @@ const tea = {
     },
     pickDate: 'Early Spring – March 14th 2021',
     oxidisationLevel: '0%',
-    images: null
+    images: []
 }
 export default tea;

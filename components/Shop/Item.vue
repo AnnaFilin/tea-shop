@@ -1,5 +1,8 @@
 <template>
-  <v-card class="pa-5" height="100%" width="100%" tile>
+  <!-- <v-card class="pa-5 item-border item-bg" height="100%" width="100%" tile nuxt :to="`Item/${item.title}`" flat outlined> -->
+
+  <v-card class="item-bg" height="100%" width="100%" tile nuxt :to="`Item/${item.title}`" flat outlined>
+    <!-- :to="`/Shop/${item.category}/${item.title}`" -->
     <v-row >
     
       <v-card-actions>
@@ -10,12 +13,17 @@
       </v-card-actions>
     </v-row>
     <!-- <img height="150px" :src="'http://localhost:1337' +item.png[0].formats.small.url" alt=""> -->
-    <img width="50%" :src="item.png" :alt="item.title" />
-        <v-card-title class="text-center darkgray--text">
+    <div style="height: 250px">
+      <img style='height: 100%; width: 100%; object-fit: contain' :src="item.image" :alt="item.title" />
+    </div>
+    <!-- <img width="50%" :src="item.png" :alt="item.title" /> -->
+        <!-- <v-card-title class="text-center deepwine--text"> -->
+          <p class="text-center success--text">
             {{ item.title }}
-        </v-card-title>
+          </p>
+        <!-- </v-card-title> -->
       
-    <!-- <v-card-text class="text-center ">{{ item.description }}</v-card-text> -->
+   
   </v-card>
 </template>
 
@@ -29,3 +37,13 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.item-border
+  border-style: outset
+  border-color: rgba(100,	95,	92, .1) 
+  border-width: 2px
+  border-radius: 5%
+.item-bg
+    background: $gentle-bg !important
+</style>

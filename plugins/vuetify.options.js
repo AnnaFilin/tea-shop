@@ -14,15 +14,14 @@ export const options = {
       },
       themes: {
         light: {
-            primary: '#cbbfc6',
-            secondary: '#f79c42',
-            darkgray: '#2e3939',
-          // error: '#fff'
-          // accent: '#82B1FF',
+          
+          primary: '#cbbfc6',
+          secondary: '#f79c42',
+          accent: '#5f372a', 
           error: "#ff0303",
-          // info: '#2196F3',
-          // success: '#4CAF50',
-          // warning: '#FB8C00',
+          info: '#645f5c',
+          success: '#342221',
+          warning: '#2e3939',
         },
       },
     },

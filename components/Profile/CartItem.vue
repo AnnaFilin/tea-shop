@@ -3,15 +3,22 @@
     <v-row>
       <v-col cols="12" md="9">
         <p>{{ title }}</p>
-        <!-- <p>item id : {{ item.productId }}</p> -->
-
-        <!-- <p>{{ description }}</p> -->
         <p>{{ price }}</p>
-        <p>quantity : {{ item.quantity }}</p>
+        <v-row>
+          <v-col>
+            <p>quantity : {{ item.quantity }}</p>
+          </v-col>
+          <!-- <v-col>
+            <v-select append-outer-icon="mdi-plus" prepend-icon="mdi-minus" width=""
+          :items="items"></v-select>
+          </v-col>
+         -->
+        </v-row>
       </v-col>
       <v-col cols="12" md="3">
         <img :src="image" :alt="title" width="100px" />
       </v-col>
+      <!-- add quantity , remove from cart logic  -->
     </v-row>
   </v-sheet>
 </template>
@@ -32,7 +39,10 @@ export default {
       description: undefined,
       title: undefined,
       image: undefined,
-      price: undefined
+      price: undefined,
+      items: [
+        1,2,3,4,5,6,7,8,9,10
+      ],
     };
   },
 

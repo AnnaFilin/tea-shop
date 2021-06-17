@@ -54,7 +54,9 @@ export default {
 
             ]
         }
-    }
+    },
+    //temp mock for products
+    // ('https://fakestoreapi.com/products')
 };
 </script>
 

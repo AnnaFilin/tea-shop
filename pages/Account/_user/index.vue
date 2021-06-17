@@ -39,7 +39,12 @@
         </v-col>
       </v-row>
       <v-row>
-        <UserCart :cart="cart" :user="userName" />
+          <v-col class="px-10 mx-5">
+              <p class="extand" @click="openCart = !openCart">
+               Open Cart
+              </p>
+        <UserCart v-if="openCart" :cart="cart" :user="user" />
+          </v-col>
       </v-row>
     </v-sheet>
   </v-container>
@@ -54,7 +59,7 @@ import UpdateBaseUserDetails from "@/components/Profile/UpdateBaseUserDetails";
 import UpdateAddress from "@/components/Profile/UpdateAddress";
 
 export default {
-  layout: "user",
+  layout: "UserAccount",
   components: {
     UserBaseInfo,
     UserAddressBook,
@@ -67,7 +72,8 @@ export default {
     return {
       openUpdateDetails: false,
       openUpdateAddress: false,
-      openAddAddress: false
+      openAddAddress: false,
+      openCart: false
     };
   },
 
@@ -80,7 +86,7 @@ export default {
   async asyncData() {
     const { data } = await axios.get("https://fakestoreapi.com/carts/5");
     const user = await axios.get("https://fakestoreapi.com/users/1");
-    console.log("user :", user.data);
+    // console.log("user :", user.data);
     const userData = user.data;
     return {
       cart: data.products,

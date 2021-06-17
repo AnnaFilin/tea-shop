@@ -21,6 +21,11 @@
           </v-toolbar-title>
           <v-spacer></v-spacer>
           
+      <v-btn icon nuxt :to="'/Account'">
+         <!-- @click="signupDialog = !signupDialog" -->
+        <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
+
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
@@ -28,37 +33,6 @@
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-          <!-- <v-btn text height="100%" class="navbar-link d-none d-md-flex" to="/">
-            Home
-          </v-btn> -->
-          <!-- <v-btn
-            text
-            height="100%"
-            class="navbar-link d-none d-md-flex"
-            to="/About"
-          >
-            About
-          </v-btn>
-          <v-btn
-            text
-            height="100%"
-            class="navbar-link d-none d-md-flex"
-            to="/Stories"
-          >
-            Stories
-          </v-btn>
-          <v-btn
-            text
-            height="100%"
-            class="navbar-link d-none d-md-flex"
-            to="/Shop"
-          >
-            Shop
-          </v-btn> -->
         </v-app-bar>
       </v-row>
     </v-layout>
@@ -66,8 +40,15 @@
 </template>
 
 <script>
+
 export default {
-  name: "NavbarTop"
+  name: "NavbarTop",
+ 
+  data() {
+    return {
+    }
+  },
+
 };
 </script>
 <style lang="sass" scoped>

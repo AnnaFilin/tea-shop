@@ -20,6 +20,7 @@ import NavbarTop from '@/components/Navigation/NavbarTop'
 import SideNavigation from '@/components/Navigation/SideNavigation'
 
 export default {
+  name: 'UserAccount',
   components: { NavbarTop, SideNavigation },
 
   data () {

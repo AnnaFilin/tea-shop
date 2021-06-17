@@ -8,13 +8,12 @@ export const options = {
       disable: false,
       options: {
         cspNonce: undefined,
-        customProperties: undefined,
+        customProperties: true,
         minifyTheme: undefined,
         themeCache: undefined,
       },
       themes: {
-        light: {
-          
+        light: { 
           primary: '#cbbfc6',
           secondary: '#f79c42',
           accent: '#5f372a', 

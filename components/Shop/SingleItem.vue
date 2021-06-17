@@ -26,15 +26,19 @@
             Taste : {{ tastes }}
         </v-card-text>
         <v-row>
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="5">
             <SizeSelect :options="item.sizeOption" v-model="packSize" />
           </v-col>
-          <v-col cols="12" md="4" class="align-self-center">
-            <QuantitySelect v-model="quantity" />
+          <v-col cols="12" md="3" class="ma-5 pa-5">
+            <QuantitySelect v-model="quantity" class="mt-3"/>
             <TotalCalculator
+              class="mt-14 text-center text-h6"
               :priceOfProduct="item.price"
               :quantity="totalWeight"
             />
+          </v-col>
+          <v-col cols="12" md="2" class="ma-5 pa-5 mt-8">
+            <v-btn x-large depressed outlineed block class="add-cart-btn">Add to cart</v-btn>
           </v-col>
         </v-row>
         <v-row>
@@ -60,7 +64,7 @@
     <v-row class="mx-16">
         <v-col v-for="(tip, i) in item.instructions" :key="i" class="">
             <v-card-text class="info--text text-center text-h6 mb-4">
-                {{ i }} : {{ tip }}
+                {{ i.charAt(0).toUpperCase() + i.slice(1) }} : {{ tip }}
             </v-card-text>
         </v-col>
     </v-row>
@@ -125,4 +129,6 @@ export default {
   border-radius: 5%
 .item-bg
     background: $gentle-bg !important
+.add-cart-btn
+  height: 64px !important
 </style>

@@ -3,10 +3,10 @@
     <v-container class="pa-1">
       <v-row justify="space-between">
             <img
-          style="height: 100%; width: 100%; object-fit: contain"
-          :src=" itemsList[selected]"
-          alt=""
-        />
+                style="height: 100%; width: 100%; object-fit: contain"
+                :src="itemsList[selected]"
+                alt=""
+            />
     </v-row>  
       <v-item-group
         v-model="selected"
@@ -20,8 +20,7 @@
           >
             <v-item v-slot="{ toggle }">
               <v-img
-                :src="item"
-                
+                :src="item"               
                 class="text-right pa-2"
                 @click="toggle"
               >         

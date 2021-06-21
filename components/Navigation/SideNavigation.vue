@@ -1,11 +1,8 @@
 <template>
-  <v-navigation-drawer permanent>
-    <!-- <v-list-item-title class="text-h6">
-        Welcome {{ user }} !
-    </v-list-item-title>  -->
-    <v-list nav dense>
+  <v-navigation-drawer permanent class="mt-3">
+    <v-list nav class="" color="info">
       <v-list-item v-for="item in items" :key="item.title" nuxt :to="item.link">
-        <v-list-item-content>
+        <v-list-item-content class="px-5 error--text text-h3">
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>

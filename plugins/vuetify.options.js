@@ -17,7 +17,7 @@ export const options = {
           primary: '#cbbfc6',
           secondary: '#f79c42',
           accent: '#5f372a', 
-          error: "#ff0303",
+          error: "#f3f1ec",
           info: '#645f5c',
           success: '#342221',
           warning: '#2e3939',

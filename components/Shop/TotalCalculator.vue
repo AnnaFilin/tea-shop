@@ -18,7 +18,7 @@ export default {
     },
     computed: {
         price() {
-            return (this.priceOfProduct * this.quantity).toPrecision(2);
+            return (this.priceOfProduct * this.quantity)//.toPrecision(2);
         }
     }
 }

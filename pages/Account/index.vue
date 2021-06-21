@@ -12,7 +12,7 @@
 import Signup from '@/components/HomePage/Registrations/Signup'
 
 export default {
-  layout: 'UserAccount',
+  layout: 'userProfile',
   components: {
       Signup
   },

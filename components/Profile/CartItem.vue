@@ -4,15 +4,23 @@
       <v-col cols="12" md="9">
         <p>{{ title }}</p>
         <p>{{ price }}</p>
-        <v-row>
-          <v-col>
-            <p>quantity : {{ item.quantity }}</p>
-          </v-col>
-          <!-- <v-col>
-            <v-select append-outer-icon="mdi-plus" prepend-icon="mdi-minus" width=""
-          :items="items"></v-select>
-          </v-col>
-         -->
+        <v-row align="center">
+            <!-- <v-row> -->
+              <v-col cols="12" md="3"  >
+                  <p class="text-body-1 info--text">Quantity : {{ quantity }}</p>
+              </v-col>
+              <v-col cols="12" md="3" >
+                  <QuantitySelect v-model="quantity" class="mt-3" />
+              </v-col>
+              <v-col>
+                {{price}}
+                <TotalCalculator
+                  class="text-center text-h6"
+                  :priceOfProduct="price"
+                  :quantity="quantity"
+                />
+              </v-col>
+            <!-- </v-row> -->
         </v-row>
       </v-col>
       <v-col cols="12" md="3">
@@ -25,14 +33,20 @@
 
 <script>
 import axios from "axios";
+import QuantitySelect from "@/components/Shop/QuantitySelect";
+import TotalCalculator from "@/components/Shop/TotalCalculator";
 
 export default {
   name: "CartItem",
-  props: {
-    item: {
-      type: Object
-    }
+  components: {
+    QuantitySelect,
+    TotalCalculator
   },
+  // props: {
+  //   item: {
+  //     type: Object
+  //   }
+  // },
   data() {
     return {
       product: undefined,
@@ -43,7 +57,9 @@ export default {
       items: [
         1,2,3,4,5,6,7,8,9,10
       ],
-    };
+
+      quantity: undefined
+    }
   },
 
   created() {
@@ -58,6 +74,15 @@ export default {
       this.title = data.title;
       this.price = data.price;
       this.image = data.image;
+      this.quantity = 1;
+      // this.price = this.price.toPrecision(1)
+    }
+  },
+
+  watch: {
+    quantity(newVal, oldVal) {
+      console.log(newVal, oldVal);
+      return newVal > oldVal ? this.$emit('addQuantity') : this.$emit('reduceQantity')
     }
   }
 };

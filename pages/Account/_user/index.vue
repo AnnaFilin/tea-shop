@@ -10,7 +10,7 @@
           <!-- option to edit info -->
           <v-row>
             <v-col class="px-10 mx-5">
-              <p class="extand" @click="openUpdateDetails = !openUpdateDetails">
+              <p class="extand text-h5 darkgrey--text" @click="openUpdateDetails = !openUpdateDetails">
                 Update Base Details
               </p>
               <!-- UpdateBaseUserDetails -->
@@ -19,31 +19,31 @@
           </v-row>
         </v-col>
         <v-col cols="12" md="6">
-          <!-- users address book-->
-          <!-- :user="userName" -->
+         
           <UserAddressBook :user="user" />
           <v-row>
-            <!-- option to add and edit -->
 
             <v-col class="px-10 mx-5">
-              <p class="extand" @click="openUpdateAddress = !openUpdateAddress">
+              <p class="extand text-h5 darkgrey--text" @click="openUpdateAddress = !openUpdateAddress">
                 Update Address
               </p>
               <UpdateAddress v-if="openUpdateAddress" />
-              <p class="extand" @click="openAddAddress = !openAddAddress">
+              <!-- <p class="extand text-h5 darkgrey--text" @click="openAddAddress = !openAddAddress">
                 Add Address
               </p>
-              <UpdateAddress v-if="openAddAddress" />
+              <UpdateAddress v-if="openAddAddress" /> -->
             </v-col>
           </v-row>
         </v-col>
       </v-row>
       <v-row>
           <v-col class="px-10 mx-5">
-              <p class="extand" @click="openCart = !openCart">
-               Open Cart
+              <p class="extand text-h5 darkgrey--text" @click="openCart = !openCart">
+                <span v-show="!openCart">Open Cart</span>
+                <span v-show="openCart">Close Cart</span>
+               
               </p>
-        <UserCart v-if="openCart" :cart="cart" :user="user" />
+              <UserCart v-if="openCart" :cart="cart" :user="user" />
           </v-col>
       </v-row>
     </v-sheet>
@@ -59,7 +59,7 @@ import UpdateBaseUserDetails from "@/components/Profile/UpdateBaseUserDetails";
 import UpdateAddress from "@/components/Profile/UpdateAddress";
 
 export default {
-  layout: "UserAccount",
+  layout: "userProfile",
   components: {
     UserBaseInfo,
     UserAddressBook,
@@ -77,6 +77,10 @@ export default {
     };
   },
 
+  created() {
+    this.$store.dispatch('fetchUserCart');
+  },
+
   computed: {
     userName() {
       return this.$route.params.user;
@@ -92,6 +96,9 @@ export default {
       cart: data.products,
       user: userData
     };
+  },
+
+  methods: {
   }
 };
 </script>

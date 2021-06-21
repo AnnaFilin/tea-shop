@@ -3,9 +3,9 @@
   <v-container fluid>
     <v-row class="counter-panel">
       <v-col class="pa-0">
-        <v-btn @click="counter++" x-large depressed  block class="pa-0 counter-btn" >
-          <v-icon>
-            mdi-plus
+        <v-btn @click="counter++" x-large depressed color="primary" block class="pa-0" >
+          <v-icon large>
+              mdi-plus
           </v-icon>
         </v-btn>
       </v-col>
@@ -13,17 +13,18 @@
         <v-text-field
           outlined  
           height="64px"
-          class="bg-light text-center"
+          class="bg-light"
           v-model="dataValue"
           v-bind="$attrs"
           v-on="$listeners"
           hide-details
+          type="number"
         >
         </v-text-field>
       </v-col>
       <v-col class="pa-0">
-        <v-btn @click="counter--" x-large depressed  block class="pa-0">
-          <v-icon>
+        <v-btn @click="counter > 0 ? counter-- : ''" x-large depressed color="primary" block class="pa-0">
+          <v-icon large>
             mdi-minus
           </v-icon>
         </v-btn>
@@ -39,6 +40,7 @@ import counterMixin from "@/mixins/counterMixin";
 export default {
   name: "QuantitySelect",
   mixins: [ counterMixin ],
+ 
 };
 </script>
 
@@ -46,11 +48,12 @@ export default {
 .bg-light
   background: $offwhite
   border-radius: 0
-//   min-height: 64px
+
 .v-text-field--outlined > .v-input__control > .v-input__slot 
   min-height: 64px
 
 .v-btn:not(.v-btn--round).v-size--x-large
   height: 64px
   width: 30px
+
 </style>
